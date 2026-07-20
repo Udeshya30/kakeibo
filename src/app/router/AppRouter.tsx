@@ -34,6 +34,18 @@ function RouteLoadingState() {
   return <p role="status">Opening this screen…</p>;
 }
 
+// Detect a reasonable basename so the router works both locally and when
+// deployed to a repository subpath (e.g. GitHub Pages at /owner/repo/).
+const detectedBase = (() => {
+  try {
+    const parts = window.location.pathname.split('/');
+    if (parts.length > 1 && parts[1]) return `/${parts[1]}/`;
+  } catch (e) {
+    // fallback to root
+  }
+  return '/';
+})();
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -95,7 +107,7 @@ const router = createBrowserRouter([
       }
     ]
   }
-]);
+], { basename: detectedBase });
 
 export function AppRouter() {
   return <RouterProvider router={router} />;
