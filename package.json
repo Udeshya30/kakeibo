@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "NODE_OPTIONS=--require ./scripts/polyfill-crypto.cjs tsc -b && NODE_OPTIONS=--require ./scripts/polyfill-crypto.cjs vite build",
+    "build": "NODE_OPTIONS=\"--require ./scripts/polyfill-crypto.cjs\" tsc -b && NODE_OPTIONS=\"--require ./scripts/polyfill-crypto.cjs\" vite build",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
