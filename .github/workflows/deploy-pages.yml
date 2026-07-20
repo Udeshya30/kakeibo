@@ -79,3 +79,10 @@ jobs:
         with:
           name: docs
           path: ./docs
+
+      - name: Deploy to GitHub Pages (gh-pages)
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
+          publish_branch: gh-pages
