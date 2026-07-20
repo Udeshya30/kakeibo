@@ -16,10 +16,10 @@ export default defineConfig({
         theme_color: '#F7F7F4',
         background_color: '#F7F7F4',
         display: 'standalone',
-        start_url: '/',
+        start_url: './',
         icons: [
           {
-            src: '/icons/icon.svg',
+            src: './icons/icon.svg',
             sizes: 'any',
             type: 'image/svg+xml',
             purpose: 'any'
@@ -27,7 +27,7 @@ export default defineConfig({
         ]
       },
       workbox: {
-        navigateFallback: '/index.html',
+        navigateFallback: './index.html',
         globPatterns: ['**/*.{js,css,html,svg,ico,png,webp}']
       },
       devOptions: {
