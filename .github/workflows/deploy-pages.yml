@@ -49,6 +49,20 @@ jobs:
       - name: Build
         run: npm run build --if-present
 
+      - name: Show build output
+        run: |
+          echo "Working directory: $(pwd)"
+          ls -la
+          if [ -d docs ]; then
+            echo "docs exists:"
+            ls -la docs | sed -n '1,200p'
+            echo "First 20 lines of docs/index.html:"
+            head -n 20 docs/index.html || true
+          else
+            echo "docs directory missing"
+            exit 1
+          fi
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
