@@ -26,6 +26,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Show environment and scripts
+        run: |
+          echo "node: $(node -v)"
+          echo "npm: $(npm -v)"
+          echo "workspace files:"
+          ls -la | sed -n '1,200p'
+          echo "-- package.json build script --"
+          node -e "const p=require('./package.json'); console.log(p.scripts && p.scripts.build)"
+          echo "-- head of polyfill script --"
+          head -n 50 ./scripts/polyfill-crypto.cjs || true
+
       - name: Run tests
         run: npm test --silent
 
