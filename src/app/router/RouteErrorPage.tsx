@@ -10,7 +10,10 @@ export function RouteErrorPage() {
         title="This page is unavailable"
         description="Your local data has not been changed. Return to the dashboard and try again."
         actionLabel="Go to dashboard"
-        onAction={() => window.location.assign('/')}
+        onAction={() => {
+          const base = (import.meta.env && import.meta.env.BASE_URL) || './';
+          window.location.assign(base);
+        }}
       />
     </main>
   );
