@@ -43,31 +43,34 @@ export class DexieTransactionRepository implements TransactionRepository {
           }
 
           const timestamp = new Date().toISOString();
-          const record: TransactionRecord =
-            command.draft.type === 'income'
-              ? {
-                  id: createIdentifier(),
-                  monthId: command.monthId,
-                  type: 'income',
-                  amountMinor: command.draft.amountMinor,
-                  currency: context.data.currency,
-                  occurredOn: command.draft.occurredOn,
-                  note: command.draft.note,
-                  createdAt: timestamp,
-                  updatedAt: timestamp
-                }
-              : {
-                  id: createIdentifier(),
-                  monthId: command.monthId,
-                  type: 'expense',
-                  category: command.draft.category,
-                  amountMinor: command.draft.amountMinor,
-                  currency: context.data.currency,
-                  occurredOn: command.draft.occurredOn,
-                  note: command.draft.note,
-                  createdAt: timestamp,
-                  updatedAt: timestamp
-                };
+          let record: TransactionRecord;
+
+          if (command.draft.type === 'income') {
+            record = {
+              id: createIdentifier(),
+              monthId: command.monthId,
+              type: 'income',
+              amountMinor: command.draft.amountMinor,
+              currency: context.data.currency,
+              occurredOn: command.draft.occurredOn,
+              note: command.draft.note,
+              createdAt: timestamp,
+              updatedAt: timestamp
+            } as TransactionRecord;
+          } else {
+            record = {
+              id: createIdentifier(),
+              monthId: command.monthId,
+              type: 'expense',
+              category: command.draft.category,
+              amountMinor: command.draft.amountMinor,
+              currency: context.data.currency,
+              occurredOn: command.draft.occurredOn,
+              note: command.draft.note,
+              createdAt: timestamp,
+              updatedAt: timestamp
+            } as TransactionRecord;
+          }
 
           await kakeiboDatabase.transactions.add(record);
 
@@ -108,10 +111,36 @@ export class DexieTransactionRepository implements TransactionRepository {
           }
 
           const updatedAt = new Date().toISOString();
-          const record: TransactionRecord =
-            command.draft.type === 'income'
-              ? { ...existing, ...command.draft, type: 'income', updatedAt }
-              : { ...existing, ...command.draft, type: 'expense', updatedAt };
+          let record: TransactionRecord;
+
+          if (command.draft.type === 'income') {
+            record = {
+              ...existing,
+              id: existing.id,
+              monthId: existing.monthId,
+              type: 'income',
+              amountMinor: command.draft.amountMinor,
+              currency: existing.currency,
+              occurredOn: command.draft.occurredOn,
+              note: command.draft.note,
+              createdAt: existing.createdAt,
+              updatedAt
+            } as TransactionRecord;
+          } else {
+            record = {
+              ...existing,
+              id: existing.id,
+              monthId: existing.monthId,
+              type: 'expense',
+              category: (command.draft as any).category ?? (existing as any).category,
+              amountMinor: command.draft.amountMinor,
+              currency: existing.currency,
+              occurredOn: command.draft.occurredOn,
+              note: command.draft.note,
+              createdAt: existing.createdAt,
+              updatedAt
+            } as TransactionRecord;
+          }
 
           await kakeiboDatabase.transactions.put(record);
 

@@ -12,14 +12,14 @@ export async function importDatabase(bundle: ImportBundle): Promise<{ success: t
   }
 
   try {
-    await kakeiboDatabase.transaction('rw',
+    await kakeiboDatabase.transaction('rw', [
       kakeiboDatabase.appSettings,
       kakeiboDatabase.budgetMonths,
       kakeiboDatabase.budgetPlans,
       kakeiboDatabase.transactions,
       kakeiboDatabase.monthlyReviews,
-      kakeiboDatabase.appMetadata,
-      async () => {
+      kakeiboDatabase.appMetadata
+    ], async () => {
         // clear existing
         await Promise.all([
           kakeiboDatabase.appSettings.clear(),

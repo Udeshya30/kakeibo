@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getReviewByMonth, saveReview } from '@/features/review/application/reviewService';
 import type { MonthlyReviewRecord } from '@/shared/domain/persistence';
 import { Button } from '@/shared/ui/actions/Button';
 import styles from '../MonthlyReview.module.scss';
 
 export function MonthlyReviewPage({ monthId }: { monthId: string }) {
-  const [review, setReview] = useState<MonthlyReviewRecord | null>(null);
+  const [, setReview] = useState<MonthlyReviewRecord | null>(null);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [status, setStatus] = useState<string | null>(null);
 

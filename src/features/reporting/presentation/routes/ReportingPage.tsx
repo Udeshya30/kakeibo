@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getCategoryTotalsForMonth } from '@/features/reporting/application/reportingService';
 import { getAppSettings } from '@/features/preferences/application/preferencesService';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip } from 'recharts';

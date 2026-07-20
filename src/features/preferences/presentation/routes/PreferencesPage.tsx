@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getAppSettings, updateAppSettings } from '@/features/preferences/application/preferencesService';
 import type { AppSettingsRecord } from '@/shared/domain/persistence';
 import { Button } from '@/shared/ui/actions/Button';
