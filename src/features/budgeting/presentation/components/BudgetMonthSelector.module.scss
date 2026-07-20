@@ -1,0 +1,43 @@
+.container {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.label {
+  color: var(--color-ink-strong);
+  font-size: 0.875rem;
+  font-weight: 650;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.controls select,
+.createButton {
+  min-height: 2.75rem;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-medium);
+  background: var(--color-surface);
+  font: inherit;
+}
+
+.controls select {
+  min-width: 12rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.createButton {
+  padding: 0.5rem 0.875rem;
+  color: var(--color-primary-pressed);
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.controls select:focus-visible,
+.createButton:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}

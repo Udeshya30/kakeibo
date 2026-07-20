@@ -1,0 +1,118 @@
+.appShell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+.skipLink {
+  position: fixed;
+  z-index: 2;
+  top: 0.5rem;
+  left: 0.5rem;
+  transform: translateY(-150%);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-small);
+  color: var(--color-surface);
+  background: var(--color-ink-strong);
+}
+
+.skipLink:focus {
+  transform: translateY(0);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.brand {
+  color: var(--color-ink-strong);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.monthContext {
+  margin: 0;
+  color: var(--color-ink-muted);
+  font-size: 0.875rem;
+}
+
+.navigation {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.25rem;
+  order: 3;
+  padding: 0.5rem;
+  border-top: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.navigationLink,
+.navigationLinkActive {
+  display: grid;
+  min-height: 2.75rem;
+  place-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border-radius: var(--radius-small);
+  color: var(--color-ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.navigationLinkActive {
+  color: var(--color-primary-pressed);
+  background: var(--color-primary-subtle);
+}
+
+.navigationLink:focus-visible,
+.navigationLinkActive:focus-visible,
+.brand:focus-visible {
+  outline: 3px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+.main {
+  width: min(100%, 72rem);
+  margin: 0 auto;
+  padding: 1.5rem 1rem 6rem;
+}
+
+@media (min-width: 48rem) {
+  .appShell {
+    grid-template-columns: 14rem minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+  }
+
+  .header {
+    grid-column: 1 / -1;
+  }
+
+  .navigation {
+    grid-template-columns: 1fr;
+    align-content: start;
+    order: initial;
+    padding: 1rem;
+    border-top: 0;
+    border-right: 1px solid var(--color-border);
+  }
+
+  .navigationLink,
+  .navigationLinkActive {
+    grid-template-columns: 1.5rem 1fr;
+    justify-items: start;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .main {
+    padding: 2rem;
+  }
+}

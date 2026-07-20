@@ -1,0 +1,14 @@
+.state {
+  display: grid;
+  gap: 1rem;
+  max-width: 40rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-large);
+  background: var(--color-surface);
+}
+
+.state h1,
+.state p {
+  margin: 0;
+}

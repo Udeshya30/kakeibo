@@ -1,0 +1,36 @@
+.container {
+  max-width: 56rem;
+  padding: 1rem;
+}
+
+.controls {
+  margin-bottom: 1rem;
+}
+
+.importRow {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.fileLabel {
+  font-weight: 600;
+}
+
+.preview {
+  border: 1px solid var(--color-border-strong);
+  padding: 0.75rem;
+  border-radius: var(--radius-small);
+  background: var(--color-surface);
+}
+
+.previewActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.status {
+  margin-top: 0.75rem;
+}

@@ -1,0 +1,7 @@
+# Repository structure scaffold: generated source, dependency, build, and local-editor artifacts will be ignored when tooling is introduced.
+node_modules/
+dist/
+coverage/
+.vite/
+*.local
+.DS_Store

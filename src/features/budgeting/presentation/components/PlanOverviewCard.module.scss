@@ -1,0 +1,47 @@
+.card {
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-large);
+  background: var(--color-surface);
+}
+
+.card h2,
+.description {
+  margin: 0;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1rem;
+  margin: 0;
+}
+
+.metrics div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.metrics dt {
+  color: var(--color-ink-muted);
+  font-size: 0.875rem;
+}
+
+.metrics dd {
+  margin: 0;
+  color: var(--color-ink-strong);
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.metrics dd.negative {
+  color: var(--color-danger);
+}
+
+.description {
+  color: var(--color-ink-muted);
+  font-size: 0.875rem;
+}
